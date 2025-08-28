@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="RealEstate.Infrastructure" />
+		<!-- Si tienes proyecto de tests de Dominio y necesitas acceso: -->
+		<!-- <InternalsVisibleTo Include="RealEstate.Domain.Tests" /> -->
+	</ItemGroup>
+</Project>
