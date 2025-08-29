@@ -1,10 +1,8 @@
-﻿using System.Linq;                        // Any(), EnumerateArray().Any(...)
+﻿using FluentAssertions;
+using RealEstate.Tests.Infra;             // TestWebAppFactory, TestClientHelper
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
-using FluentAssertions;
-using NUnit.Framework;                    // [TestFixture], [Test], [SetUp], [TearDown]
-using RealEstate.Tests.Infra;             // TestWebAppFactory, TestClientHelper
 
 namespace RealEstate.Tests.Integration
 {

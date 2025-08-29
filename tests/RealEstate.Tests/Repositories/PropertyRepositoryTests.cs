@@ -1,10 +1,6 @@
-﻿using System.Linq;                                // First(), Any(), All()
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
-using NUnit.Framework;                            // [Test], [SetUp], etc.
 using RealEstate.Infrastructure.Repositories;
 using RealEstate.Tests.Util;
 
