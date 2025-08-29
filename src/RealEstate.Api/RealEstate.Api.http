@@ -1,6 +1,75 @@
 @RealEstate.Api_HostAddress = http://localhost:5219
+@token =      // pega aquí el token después de hacer el login (línea 1 del JSON: accessToken)
 
-GET {{RealEstate.Api_HostAddress}}/weatherforecast/
+/* ===================== AUTH ===================== */
+### Login (obtiene token)
+POST {{RealEstate.Api_HostAddress}}/api/Auth/GenerateToken
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+/* ===================== PROPERTIES (público) ===================== */
+### Listar propiedades públicas
+GET {{RealEstate.Api_HostAddress}}/api/Properties/ListProperties?city=Bogotá&page=1&pageSize=5
 Accept: application/json
 
-###
+/* ===================== PROPERTIES (requieren JWT) ===================== */
+### Crear propiedad
+POST {{RealEstate.Api_HostAddress}}/api/Properties/CreateProperty
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "code": "P-777",
+  "name": "Casa Pruebas",
+  "address": "Calle Test #1-2",
+  "city": "Bogotá",
+  "price": 123456,
+  "idOwner": 1,
+  "year": 2024,
+  "bedrooms": 3,
+  "bathrooms": 2,
+  "areaSqFt": 111,
+  "description": "Creada desde .http"
+}
+
+### Cambiar precio
+PUT {{RealEstate.Api_HostAddress}}/api/Properties/ChangePrice/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "newPrice": 999999,
+  "notes": "Cambio desde .http"
+}
+
+### Actualizar datos básicos
+PUT {{RealEstate.Api_HostAddress}}/api/Properties/UpdateProperty/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Apto Centro Edit",
+  "address": "Dir 1 Edit",
+  "city": "Bogotá",
+  "year": 2022,
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "areaSqFt": 80,
+  "description": "Editado desde .http"
+}
+
+### Agregar imagen
+POST {{RealEstate.Api_HostAddress}}/api/Properties/1/AddImageToProperty
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "fileUrl": "/uploads/images/test-int.jpg",
+  "isMain": true,
+  "caption": "Imagen de prueba",
+  "sortOrder": 1
+}

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -17,6 +17,11 @@
     <PackageReference Include="NUnit" Version="3.14.0" />
     <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
+	  <!-- EF Core InMemory -->
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.8" />
+	  <!-- AutoMapper (para instanciar perfiles reales) -->
+	  <PackageReference Include="AutoMapper" Version="15.0.1" />
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.19" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,8 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
+	 <ProjectReference Include="..\..\src\RealEstate.Api\RealEstate.Api.csproj" />
     <ProjectReference Include="..\..\src\RealEstate.Domain\RealEstate.Domain.csproj" />
     <ProjectReference Include="..\..\src\RealEstate.Application\RealEstate.Application.csproj" />
+	<ProjectReference Include="..\..\src\RealEstate.Infrastructure\RealEstate.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

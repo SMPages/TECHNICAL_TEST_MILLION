@@ -3,9 +3,15 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 namespace RealEstate.Api.Security;
-
+/// <summary>
+/// Configura autenticación JWT Bearer para la API.
+/// </summary>
 public static class JwtSetup
 {
+
+    /// <summary>
+    /// Registra autenticación JWT Bearer usando configuración de <paramref name="config"/>.
+    /// </summary>
     public static IServiceCollection AddJwtAuth(this IServiceCollection services, IConfiguration config)
     {
         var key = config["Jwt:Key"];

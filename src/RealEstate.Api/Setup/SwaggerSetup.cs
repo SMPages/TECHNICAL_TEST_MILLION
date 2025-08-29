@@ -2,8 +2,15 @@
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace RealEstate.Api.Setup;
+
+/// <summary>
+/// Registro y configuración de Swagger/OpenAPI para la API.
+/// </summary>
 public static class SwaggerSetup
 {
+    /// <summary>
+    /// Agrega e inicializa Swagger/OpenAPI al contenedor de servicios.
+    /// </summary>
     public static IServiceCollection AddAppSwagger(this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();
@@ -17,6 +24,21 @@ public static class SwaggerSetup
             if (File.Exists(xml))
                 c.IncludeXmlComments(xml, includeControllerXmlComments: true);
 
+
+            c.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "RealEstate API – Million",
+                Version = "v1",
+                Description =
+                   "API para gestión de propiedades (crear, actualizar, cambiar precio, imágenes y listados con filtros). " +
+                   "\n\n**Autenticación**: Bearer JWT vía `/api/Auth/GenerateToken`.",
+                Contact = new OpenApiContact
+                {
+                    Name = "Greydy Sebastián Marciales Rubio",
+                    Email = "sebastianmarciales40@gmail.com",
+                    Url = new Uri("https://dev-sebas.com/")
+                }
+            });
             // JWT
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
@@ -40,7 +62,9 @@ public static class SwaggerSetup
 
         return services;
     }
-
+    /// <summary>
+    /// Habilita Swagger y Swagger UI según el entorno.
+    /// </summary>
     public static IApplicationBuilder UseAppSwaggerUI(this IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment())
