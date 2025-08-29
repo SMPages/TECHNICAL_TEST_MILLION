@@ -4,14 +4,16 @@ Hola, soy **Greydy Sebastián Marciales Rubio (DevSebas)**. Este repo contiene m
 Implementé una API REST para gestionar propiedades inmobiliarias con un enfoque de **Arquitectura Hexagonal / Clean**, priorizando claridad, pruebas y buenas prácticas.
 
 ---
+ 📎 **Documento técnico adjunto:** ver `docs/RealEstate-API-Technical-Design.md` (detalla arquitectura, decisiones y endpoints). 
 
+ --
 ## 🚀 Stack que utilicé
 - .NET 8 (compatible con .NET 5+)
 - C# 12
 - SQL Server
 - Entity Framework Core 9
 - AutoMapper 15
-- nUnit (tests)
+- NUnit + WebApplicationFactory (tests)
 - Swagger (UI + OpenAPI)
 
 ---
